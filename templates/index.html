@@ -54,13 +54,47 @@
 
     <!-- Main page container -->
     <div class="container">
-    <h1>Test</h1>
     <div class="p-5 mb-5 bg-dark text-light rounded-3">
         <div class="container-fluid py-5">
             <h1 class="display-5">:Hello, I am Maxine █</h1>
             <p class="lead">Software Developer, Technical 3D Artist</p>
         </div>
     </div>
+        <!-- About Me Section -->
+    <section class="about-me my-5">
+        <div class="row align-items-center">
+            <!-- Text Content -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="h3">About Me</h2>
+                <p class="lead">I'm a software developer and technical 3D artist, and generally obsessed with 3D graphics in general.</p>
+                <p>Currently studying Software Engineering at the Hanze University of Applied Science.</p>
+                <p>Here I can type some more about myself.</p>
+            </div>
+
+            <!-- Image -->
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/character.jpg') }}"
+                     class="img-fluid rounded-3 shadow"
+                     alt="Just an icon"
+                     style="max-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="h4">Skills & Technologies</h3>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <span class="badge bg-dark">C/C++</span>
+                    <span class="badge bg-dark">Python</span>
+                    <span class="badge bg-dark">PYMEL/MEL</span>
+                    <span class="badge bg-dark">HLSL/GLSL</span>
+                    <span class="badge bg-dark">OpenGL</span>
+                    <span class="badge bg-dark">ZBrush</span>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 
