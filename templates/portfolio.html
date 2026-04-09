@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-5 bg-dark text-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5">My Portfolio</h1>
+        <p class="lead">Showcase of my projects and work</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4" v-for="project in projects">
+        <div class="card h-100">
+            <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Project">
+            <div class="card-body">
+                <h5 class="card-title">Project Name</h5>
+                <p class="card-text">Description of the project........</p>
+                <a href="#" class="btn bg-custom">View Project</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
