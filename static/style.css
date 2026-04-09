@@ -1,0 +1,32 @@
+
+body {
+  background-color: #1a1a1a !important;
+}
+
+.custom-navbar {
+  background-color: #7950f2 !important; /* Purple */
+}
+
+
+:root {
+  --bs-primary: #7950f2 !important; /* Purple */
+  --bs-secondary: #ff6b6b !important; /* Coral */
+}
+
+
+.bg-custom { background-color: #303538 !important; }
+.text-custom { color: #CCCFE3 !important; }
+
+.navbar-custom { background-color: #7950f2 !important; }
+
+.custom-hero {
+  background-color: #636c72 !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+  padding: 3rem !important;
+}
+
+.btn-primary {
+    background-color: #7950f2 !important;
+    border-color: #7950f2 !important;
+}
