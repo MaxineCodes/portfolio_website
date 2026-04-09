@@ -3,47 +3,212 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <div class="p-5 mb-5 bg-dark text-light rounded-5">
-        <div class="container-fluid py-5">
-            <h1 class="display-5">:Hello, I am Maxine █</h1>
-            <p class="lead">Software Developer, Technical 3D Artist</p>
-        </div>
+
+    <!-- Full-width banner container -->
+<div class="full-width-container">
+    <!-- Banner background -->
+    <div class="banner-background" style="z-index: 1;">
+      <img src="{{ url_for('static', filename='images/banner.jpg') }}" class="img-fluid" alt="Banner">
     </div>
 
+  <!-- Hero Section -->
+<div class="p-5 mb-5 bg-gradient-custom text-light rounded-5" style="z-index: 2; position: relative;">
+    <div class="container-fluid py-5 text-center">
+      <div class="avatar-circle mx-auto mb-4">
+        <img src="{{ url_for('static', filename='images/profile_icon.jpg') }}"
+             class="img-fluid rounded-circle"
+             alt="Maxine"
+             style="width: 150px; height: 150px; object-fit: cover;">
+      </div>
+      <div class="terminal">
+        <h1 class="typewriter display-5"> Hi, I am Maxine  </h1>
+      </div>
+      <p class="lead"></p>
+        <p class="lead" style="background-color: #222; padding: 8px 12px; border-radius: 4px; display: inline;">
+        Software Developer, Technical 3D Artist</p>
+
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="#portfolio" class="btn btn-primary btn-lg px-4">View My Work</a>
+        <a href="{{ url_for('contact') }}" class="btn btn-outline-primary btn-lg px-4">Say Hello</a>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- About Me Section -->
-    <section class="about-me my-5">
-        <div class="row align-items-center">
+    <section id="about" class="my-5">
+        <div class="row align-items-center g-5">
             <!-- Text Content -->
             <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="h3">About Me</h2>
+                <h2 class="h3 mb-4">🌸 About Me</h2>
                 <p class="lead">Hi, I'm Maxine, a software developer from the Netherlands with a huge passion for 3D graphics, rendering engines, mathematics and optimization.</p>
                 <p>Currently studying Software Engineering at the Hanze University of Applied Science.</p>
                 <p>Having started as a freelancer in 3D game art and moving more towards programming as time goes on, I see myself as a software engineer who can bridge gaps between art and code.</p>
-                <p></p>
                 <p>Or simply put.. When artists and designers come up with crazy impossible ideas, I come up with crazy implementations to make it possible! Whether this is streamlining the production pipeline and using clever tricks so we can make more with less, or working on tech to raise the limits of quality we can reach, I'll figure out what it takes.</p>
-                <p></p>
+
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <h6 class="small text-muted mb-2">🎮 Hobbies</h6>
+                        <ul class="list-unstyled small">
+                            <li>Gaming</li>
+                            <li>3D Sculpting & Texturing</li>
+                            <li>Swimming</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h6 class="small text-muted mb-2">🎵 Interests</h6>
+                        <ul class="list-unstyled small">
+                            <li>Animation & Anime</li>
+                            <li>Coffee</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+    <h6 class="small text-muted mb-2">🔠 Languages</h6>
+    <div class="d-flex flex-wrap gap-2">
+        <span class="badge bg-primary d-flex align-items-center gap-1">
+            🇳🇱 Dutch
+        </span>
+        <span class="badge bg-primary d-flex align-items-center gap-1">
+            Frisian
+        </span>
+        <span class="badge bg-primary d-flex align-items-center gap-1">
+            🇬🇧 English
+        </span>
+        <span class="badge bg-success d-flex align-items-center gap-1">
+            🇯🇵 Japanese
+        </span>
+        <span class="badge bg-warning text-dark d-flex align-items-center gap-1">
+            🇨🇳 Mandarin
+        </span>
+        <span class="badge bg-warning text-dark d-flex align-items-center gap-1">
+            🇩🇪 German
+        </span>
+    </div>
+</div>
+
+                </div>
             </div>
 
             <!-- Image -->
             <div class="col-md-6">
                 <img src="{{ url_for('static', filename='images/character.jpg') }}"
-                     class="img-fluid rounded-5 shadow"
-                     alt="Just an icon"
-                     style="max-height: 400px; object-fit: cover;">
+                     class="img-fluid rounded-5 shadow-lg"
+                     alt="Maxine"
+                     style="max-height: 400px; object-fit: cover; width: 100%;">
             </div>
         </div>
+    </section>
 
-        <!-- Skills Section -->
-        <div class="row mt-5">
-            <div class="col-12">
-                <h3 class="h4">Skills & Technologies</h3>
-                <div class="d-flex flex-wrap gap-2 mt-3">
-                    <span class="badge bg-dark">C/C++</span>
-                    <span class="badge bg-dark">Python</span>
-                    <span class="badge bg-dark">PYMEL/MEL</span>
-                    <span class="badge bg-dark">HLSL/GLSL</span>
-                    <span class="badge bg-dark">OpenGL</span>
-                    <span class="badge bg-dark">ZBrush</span>
+    <!-- Skills Section -->
+    <section id="skills" class="my-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 mb-3">My Tech Stack</h2>
+            <p class="text-muted">Tools and technologies I work with</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card tech-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Development</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-dark">C/C++</span>
+                            <span class="badge bg-dark">Python</span>
+                            <span class="badge bg-dark">OpenGL</span>
+                            <span class="badge bg-dark">Git</span>
+                            <span class="badge bg-dark">Jetbrains IDE's</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card tech-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">3D DCC Applications</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-dark">ZBrush</span>
+                            <span class="badge bg-dark">Maya</span>
+                            <span class="badge bg-dark">Blender</span>
+                            <span class="badge bg-dark">3DCoat</span>
+                            <span class="badge bg-dark">Substance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card tech-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Development</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-dark">Git</span>
+                            <span class="badge bg-dark">Docker</span>
+                            <span class="badge bg-dark">Linux</span>
+                            <span class="badge bg-dark">Visual Studio</span>
+                            <span class="badge bg-dark">PyCharm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card tech-card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Setup</h5>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <span class="badge bg-dark">Linux PikaOS</span>
+                            <span class="badge bg-dark">AMD Ryzen 7900x 12-core CPU</span>
+                            <span class="badge bg-dark">RTX 3080 GPU</span>
+                            <span class="badge bg-dark">32GB DDR5 RAM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Work Section -->
+    <section class="my-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 mb-3">Latest Work</h2>
+            <p class="text-muted">Featured projects and recent blog posts</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Latest Portfolio -->
+            <div class="col-md-6">
+                <h3 class="h5 mb-4">Latest Projects</h3>
+                <div class="card project-card mb-3 shadow-sm">
+                    <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Project">
+                    <div class="card-body">
+                        <h5 class="card-title">Some impressive project</h5>
+                        <p class="card-text">It's very impressive I am sure</p>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-primary">Tag1</span>
+                            <span class="badge bg-primary">Tag2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="#" class="btn btn-outline-primary btn-sm">View All Projects →</a>
+                </div>
+            </div>
+
+            <!-- Latest Blog -->
+            <div class="col-md-6">
+                <h3 class="h5 mb-4">Latest Blog Posts</h3>
+                <div class="card blog-card mb-3 shadow-sm">
+                    <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Blog Post">
+                    <div class="card-body">
+                        <small class="text-muted">March 15, 2026</small>
+                        <h5 class="card-title mt-2">Some blog about something</h5>
+                        <p class="card-text">I talk about something here</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="#" class="btn btn-outline-primary btn-sm">View All Posts →</a>
                 </div>
             </div>
         </div>

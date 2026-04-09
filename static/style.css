@@ -1,38 +1,205 @@
-
-body {
-  background: linear-gradient(135deg, #DAD6E5, #BBB2CE) !important;
-    background-attachment: fixed !important;
-}
-
-.custom-navbar {
-  background-color: #BBB2CE !important; /* Purple */
-}
-
-
+/* CSS Custom Properties for consistent theming */
 :root {
-  --bs-primary: #7950f2 !important; /* Purple */
-  --bs-secondary: #ff6b6b !important; /* Coral */
+  /* Core Brand Colors */
+  --color-primary: #7950f2; /* Purple - main brand color */
+  --color-secondary: #ff6b6b; /* Coral - accent */
+
+  /* Background Colors */
+  --color-bg-custom: #6A5B81; /* Deep purple-blue */
+  --color-bg-dark: #2E263B; /* Dark charcoal */
+  --color-bg-light: #BBB2CE; /* Soft lavender */
+  --color-bg-page: #DAD6E5; /* Light background */
+
+  /* Text Colors */
+  --color-text-custom: #CCCFE3; /* Light gray-blue */
+  --color-text-light: #FDFBF9; /* Off-white */
+  --color-text-dark: #17141D; /* Near-black */
+
+  /* Semantic Colors */
+  --color-success: #4ecdc4; /* Teal */
+  --color-warning: #FFD166; /* Yellow */
+  --color-danger: #EF476F; /* Pink */
+  --color-info: #118AB2; /* Blue */
 }
 
-
-.bg-custom { background-color: #6A5B81 !important; }
-.bg-dark { background-color: #2E263B !important; }
-.bg-light { background-color: #BBB2CE !important; }
-
-.text-custom { color: #CCCFE3 !important; }
-.text-light { color: #FDFBF9 !important; }
-.text-dark { color: #17141D !important; }
-
-.navbar-custom { background-color: #7950f2 !important; }
-
-.custom-hero {
-  background-color: #636c72 !important;
-  color: white !important;
-  border-radius: 0.5rem !important;
-  padding: 3rem !important;
+/* Apply Bootstrap variables for consistent component styling */
+:root {
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-success: var(--color-success);
+  --bs-warning: var(--color-warning);
+  --bs-danger: var(--color-danger);
+  --bs-info: var(--color-info);
+  --bs-light: var(--color-bg-light);
+  --bs-dark: var(--color-bg-dark);
 }
 
+/* Base typography and layout */
+body {
+  background:
+    url('../static/images/debian_wallpaper.jpg') center center,
+    linear-gradient(135deg, var(--color-bg-page), var(--color-bg-light));
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--color-text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Background utility classes */
+.bg-custom { background-color: var(--color-bg-custom) !important; }
+.bg-dark { background-color: var(--color-bg-dark) !important; }
+.bg-light { background-color: var(--color-bg-light) !important; }
+
+/* Text utility classes */
+.text-custom { color: var(--color-text-custom) !important; }
+.text-light { color: var(--color-text-light) !important; }
+.text-dark { color: var(--color-text-dark) !important; }
+
+/* Button styling */
 .btn-primary {
-    background-color: #7950f2 !important;
-    border-color: #7950f2 !important;
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6a40d1 !important;
+  border-color: #6a40d1 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(121, 80, 242, 0.3);
+}
+
+/* Navigation */
+.navbar-custom {
+  background-color: var(--color-bg-light) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Terminal styling */
+.terminal {
+  font-family: "Source Code Pro", "Courier New", monospace;
+  color: var(--color-text-light);
+  background-color: var(--color-bg-dark);
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid var(--color-text-light);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .05em;
+  animation:
+    typing 1.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--color-text-light) }
+}
+
+/* Full-width banner */
+.full-width-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.banner-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  margin-left: calc(-50vw + 50%);
+  z-index: 1;
+}
+
+.banner-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hero section with proper layering */
+.hero-section {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(218, 214, 229, 0.8), rgba(187, 178, 206, 0.8));
+  padding: 5rem 0;
+  border-radius: 1rem;
+}
+
+/* Card styling for consistent UI elements */
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Badge styling for skills and tags */
+.badge {
+  border-radius: 50px;
+  padding: 0.5em 0.8em;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+
+/* Link styling */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #6a40d1;
+  text-decoration: underline;
+}
+
+/* Form elements */
+.form-control {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(121, 80, 242, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .terminal {
+    padding: 15px;
+  }
+
+  .typewriter {
+    font-size: 1.25rem;
+  }
 }
