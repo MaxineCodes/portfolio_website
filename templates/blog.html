@@ -3,23 +3,41 @@
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-5 bg-dark text-light rounded-3">
+<!-- Hero Section -->
+<section class="bg-gradient text-white py-5 mb-5">
+<div class="container">
+<div class="p-2 mb-2 bg-dark text-light rounded-5">
     <div class="container-fluid py-5">
-        <h1 class="display-5">My blog</h1>
-        <p class="lead">Showcase of my blogs</p>
+        <h1 class="display-9">My Blog</h1>
+        <!--<p class="lead"></p>-->
     </div>
 </div>
+</div>
+</section>
 
-<div class="row">
-    <div class="col-md-4 mb-4" v-for="project in projects">
-        <div class="card h-100">
-            <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Project">
-            <div class="card-body">
-                <h5 class="card-title">Blog Name</h5>
-                <p class="card-text">Description of the Blog........</p>
-                <a href="#" class="btn bg-custom">View Blog</a>
-            </div>
-        </div>
+<!-- Blog Posts List -->
+<section class="container mb-5">
+    <div class="d-flex flex-column gap-4">
+    <!-- Blog Post 1 -->
+    <article class="border-bottom pb-3">
+        <time datetime="2026-04-10" class="text-muted small">April 10, 2026</time>
+        <h2 class="fs-5 mb-2 mt-1">Understanding Modern Web Development</h2>
+        <p class="text-secondary mb-0">Exploring the latest trends in web development including frameworks, tools, and best practices that are shaping the future of the web.</p>
+    </article>
+
+    <!-- Blog Post 2 -->
+    <article class="border-bottom pb-3">
+        <time datetime="2026-04-05" class="text-muted small">April 5, 2026</time>
+        <h2 class="fs-5 mb-2 mt-1">Design Systems: The Future of UI</h2>
+        <p class="text-secondary mb-0">How design systems are revolutionizing user interface development and ensuring consistency across digital products.</p>
+    </article>
+
+    <!-- Blog Post 3 -->
+    <article class="border-bottom pb-3">
+        <time datetime="2026-03-28" class="text-muted small">March 28, 2026</time>
+        <h2 class="fs-5 mb-2 mt-1">Getting Started with Vue 3</h2>
+        <p class="text-secondary mb-0">A comprehensive guide for beginners to start building reactive user interfaces with Vue 3 and the Composition API.</p>
+    </article>
     </div>
-</div>
+</section>
 {% endblock %}
