@@ -47,7 +47,13 @@ body {
                         <a class="nav-link" href="{{ url_for('resume') }}">/Resume</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">/Blog</a>
+                        <a class="nav-link" href="{{ url_for('blog') }}">/Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('tech') }}">/Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('writing') }}">/Writing</a>
                     </li>
                     <!--
                     <li class="nav-item">
@@ -77,6 +83,7 @@ body {
                 <!-- About Section -->
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5>ItsMaxine.eu</h5>
+                    <p class="small text-muted">Maxine Meijboom</p>
                     <p class="small text-muted">Software Developer & Technical 3D Artist.</p>
                 </div>
 
@@ -87,8 +94,10 @@ body {
                         <li class="mb-2"><a href="{{ url_for('index') }}" class="text-muted text-decoration-none">/Home</a></li>
                         <li class="mb-2"><a href="#" class="text-muted text-decoration-none">/Portfolio</a></li>
                         <li class="mb-2"><a href="{{ url_for('resume') }}" class="text-muted text-decoration-none">/Resume</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">/Blog</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">/Contact</a></li>
+                        <li class="mb-2"><a href="{{ url_for('blog') }}" class="text-muted text-decoration-none">/Blog</a></li>
+                        <li class="mb-2"><a href="{{ url_for('tech') }}" class="text-muted text-decoration-none">/Tech<E></E></a></li>
+                        <li class="mb-2"><a href="{{ url_for('tech') }}" class="text-muted text-decoration-none">/Writing<E></E></a></li>
+                        <!-- <li><a href="#" class="text-muted text-decoration-none">/Contact</a></li> -->
                     </ul>
                 </div>
 
@@ -108,7 +117,7 @@ body {
 
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="small text-muted mb-0">&copy; 2026 ItsMaxine.eu. All rights reserved.</p>
+                    <p class="small text-muted mb-0">&copy; 2026 Maxine Meijboom. All rights reserved.</p>
                 </div>
             </div>
         </div>
