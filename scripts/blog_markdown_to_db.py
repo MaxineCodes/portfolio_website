@@ -2,7 +2,8 @@ import os
 import sys
 import frontmatter
 import markdown
-from datetime import datetime
+from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions.fenced_code import FencedCodeExtension
 # Add app
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app import app, db, BlogPost
@@ -22,7 +23,7 @@ for filename in os.listdir(blogposts_dir):
         description = post['description']
 
         # Convert content to HTML
-        content_html = markdown.markdown(post.content)
+        content_html = markdown.markdown(post.content, extensions=['fenced_code', 'tables', 'toc'])
 
         with app.app_context():
             # Check if blog already exists

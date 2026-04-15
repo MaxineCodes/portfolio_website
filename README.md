@@ -147,7 +147,7 @@ Requirements:
 - File-Path 
 
 ```python
-class PortfolioItem(db.Model):
+class Image(db.Model):
 	__tablename__ = 'portfolio_items'
 	# ID: db.Integer (PK)
 	# PORTFOLIO_ITEM_ID: db.Text (FK)

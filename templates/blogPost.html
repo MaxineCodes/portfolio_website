@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
 {% block title %}Blog{% endblock %}
 
 {% block content %}
@@ -20,7 +24,9 @@
 <section class="container mb-5">
     <div class="p-5 mb-5 bg-light text-dark rounded-3">
         <div class="container-fluid py-5">
-            <p class="lead">{{ blog.content|safe }}</p>
+            <div class="blog-content text">
+                {{ blog.content|safe }}
+            </div>
         </div>
     </div>
 </section>
