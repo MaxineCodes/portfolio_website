@@ -1,6 +1,4 @@
 # portfolio_website
-A portfolio website using Flask
-
 Dit is mijn portfolio website gemaakt voor de cursus Webtechnologie bij HBO-ICT bij de Hanze Hogeschool Groningen. 
 Deze website zal ik ook uitbreiden en persoonlijk gebruiken.
 
@@ -30,8 +28,7 @@ WTForms==3.2.1
 # Database design
 
 ## Database table 1: Blog
-
-Een blog is een simpelere object om een database voor te maken.
+Een blog is een simpelere object om een database-table voor te maken.
 `.md` bestanden kunnen in de browser gerenderd worden via `from flask import render_template`. 
 
 Requirements:
@@ -64,8 +61,7 @@ class Blog(db.Model):
 ```
 
 ## Database table 2: Portfolio
-
-Deze database table is iets ingewikkelder. Het liefst kunnen de image-gallery en de text-markdown door elkaar heen. Een portfolio-item bevat ook een galerij van beelden, dit kan er maar 1 zijn, of 25. Uiteindelijk kan het zelfs een embed of video bevatten, maar dit kan op dezelfde manier geïmplementeerd worden als beelden als de database-structuur slim aan wordt gepakt. Zie database 3.
+Deze database-table is iets ingewikkelder. Het liefst kunnen de image-gallery en de text-markdown door elkaar heen. Een portfolio-item bevat ook een galerij van beelden, dit kan er maar 1 zijn, of 25. Uiteindelijk kan het zelfs een embed of video bevatten, maar dit kan op dezelfde manier geïmplementeerd worden als beelden als de database-structuur slim aan wordt gepakt. Zie database 3.
 
 Requirements:
 - Title
@@ -99,8 +95,7 @@ class PortfolioItem(db.Model):
 ```
 
 ## Database table 3: Images
-
-Deze database table zou in de toekomst ook videos of embeds kunnen ondersteunen.
+Deze database-table zou in de toekomst ook videos of embeds kunnen ondersteunen.
 
 Requirements:
 - Foreign-Key om te linken met portfolio_item table
