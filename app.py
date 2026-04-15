@@ -34,7 +34,7 @@ def writing(): return render_template("writing.html")
 # DYNAMIC routing
 @app.route('/blog')
 def blog():
-    recent_blogs = BlogPost.query.order_by(BlogPost.date.desc()).limit(10).all()
+    recent_blogs = BlogPost.query.order_by(BlogPost.date.desc()).all()
     print(recent_blogs)
     return render_template('blog.html', blogs=recent_blogs)
 @app.route('/blog/<int:blog_id>')
