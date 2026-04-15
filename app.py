@@ -32,13 +32,13 @@ def writing(): return render_template("writing.html")
 # DYNAMIC routing
 @app.route('/portfolio')
 def portfolio():
-    recent_projects = PortfolioPost.query.order_by(PortfolioPost.date.desc()).all()
+    recent_projects = Project.query.order_by(Project.date.desc()).all()
     print(recent_projects)
     return render_template('portfolio.html', projects=recent_projects)
-@app.route('/portfolio/<int:portfolio_post_id>')
-def portfolio_post(portfolio_post_id):
-    project = PortfolioPost.query.get_or_404(portfolio_post_id)
-    return render_template('portfolioPost.html', project=project)
+@app.route('/portfolio/<int:project_id>')
+def project(project_id):
+    project = Project.query.get_or_404(project_id)
+    return render_template('project.html', project=project)
 
 @app.route('/blog')
 def blog():
@@ -73,23 +73,23 @@ class BlogPost(db.Model):
     def __repr__(self): return f"Blog Post [{self.id}]: {self.title}"
 
 # Portfolio item
-class PortfolioPost(db.Model):
-    __tablename__ = 'portfolio_posts'
+class Project(db.Model):
+    __tablename__ = 'projects'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     date = db.Column(db.Date)
     thumbnail = db.Column(db.Text) # path to image
     content = db.Column(db.Text) # markdown
     # Relationship to images
-    images = db.relationship('Media', backref='portfolio_post', lazy=True)
+    images = db.relationship('Media', backref='projects', lazy=True)
     # Class Constructor
     def __init__(self, title, date, thumbnail, content):
         self.title = title
         self.date = date
         self.thumbnail = thumbnail
         self.content = content # markdown
-    # Portfolio post representation
-    def __repr__(self): return f"Portfolio post [{self.id}]: {self.title}"
+    # Portfolio project representation
+    def __repr__(self): return f"Project [{self.id}]: {self.title}"
 
 # Media item
 class Media(db.Model):
@@ -98,7 +98,7 @@ class Media(db.Model):
     file_path = db.Column(db.Text)
     type = db.Column(db.Text)
     alt_text = db.Column(db.Text, nullable=True)
-    portfolio_post_id = db.Column(db.Integer, db.ForeignKey('portfolio_posts.id'), nullable=True)
+    portfolio_post_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=True)
     # Class Constructor
     def __init__(self, file_path, media_type="image", alt_text=None, portfolio_post_id=None):
         self.file_path = file_path
@@ -126,8 +126,8 @@ with app.app_context():
 
     all_blogs = BlogPost.query.all()
     print(*all_blogs , sep="\n")
-    all_portfolio_posts = PortfolioPost.query.all()
-    print(*all_portfolio_posts , sep="\n")
+    all_projects = Project.query.all()
+    print(*all_projects , sep="\n")
     all_media = Media.query.all()
     print(*all_media , sep="\n")
 
