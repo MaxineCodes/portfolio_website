@@ -13,7 +13,7 @@
 body {
   background:
     /* Bottom layer: gradient */
-    linear-gradient(135deg, #DAD6E5, #BBB2CE),
+    linear-gradient(135deg, #DAD6E5, #6A5B81),
 
     /* Top layer: Debian wallpaper */
     url('{{ url_for("static", filename="images/debian_wallpaper.jpg") }}');
@@ -25,6 +25,7 @@ body {
 </style>
 </head>
 <body>
+
     <!-- Header/Navbar -->
     {% block header %}
     <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
