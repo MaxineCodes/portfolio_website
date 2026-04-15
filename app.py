@@ -22,8 +22,6 @@ db = SQLAlchemy(app)
 def index(): return render_template("index.html")
 @app.route("/portfolio")
 def portfolio(): return render_template("portfolio.html")
-@app.route("/blog")
-def blog(): return render_template("blog.html")
 @app.route("/resume")
 def resume(): return render_template("resume.html")
 @app.route("/contact")
@@ -34,6 +32,11 @@ def tech(): return render_template("tech.html")
 def writing(): return render_template("writing.html")
 
 # DYNAMIC routing
+@app.route('/blog')
+def blog():
+    recent_blogs = BlogPost.query.order_by(BlogPost.date.desc()).limit(10).all()
+    print(recent_blogs)
+    return render_template('blog.html', blogs=recent_blogs)
 @app.route('/blog/<int:blog_id>')
 def blog_post(blog_id):
     blog = BlogPost.query.get_or_404(blog_id)
