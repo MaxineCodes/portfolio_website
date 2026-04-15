@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 ##########################
 #### Webpage routing #####
 ##########################
+# STATIC routing
 @app.route("/")
 def index(): return render_template("index.html")
 @app.route("/portfolio")
@@ -31,6 +32,13 @@ def contact(): return render_template("contact.html")
 def tech(): return render_template("tech.html")
 @app.route("/writing")
 def writing(): return render_template("writing.html")
+
+# DYNAMIC routing
+@app.route('/blogPost/<int:blog_id>')
+def blog_post(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    return render_template('blogPost.html', blog=blog)
+
 
 ###########################
 #### Define databases #####
