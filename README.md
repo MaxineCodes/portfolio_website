@@ -27,6 +27,32 @@ WTForms==3.2.1
 
 # Database design
 
+```
+    BLOGS {
+        int id PK
+        string title
+        date date
+        string description
+        string content
+    }
+
+    PORTFOLIO_ITEMS {
+        int id PK
+        string title
+        date date
+        string description
+        string content
+    }
+
+    IMAGES {
+        int id PK
+        int portfolio_item_id FK
+        int blog_id FK
+        string alt_text
+        string file_path
+    }
+```
+
 ## Database table 1: Blog
 Een blog is een simpelere object om een database-table voor te maken.
 `.md` bestanden kunnen in de browser gerenderd worden via `from flask import render_template`. 
