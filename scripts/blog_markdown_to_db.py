@@ -24,9 +24,14 @@ for filename in os.listdir(blogposts_dir):
         # Convert content to HTML
         content_html = markdown.markdown(post.content)
 
-        # Create database entry
-        blog = BlogPost(title=title, date=date_obj, description=description, content=content_html)
-
         with app.app_context():
-            db.session.add(blog)
-            db.session.commit()
+            # Check if blog already exists
+            existing_blog = BlogPost.query.filter_by(title=title, date=date_obj).first()
+            if not existing_blog:
+                # Create database entry
+                blog = BlogPost(title=title, date=date_obj, description=description, content=content_html)
+                db.session.add(blog)
+                db.session.commit()
+                print(f"Added: {title}")
+
+            else:print(f"Skipped (already exists): {title}")
