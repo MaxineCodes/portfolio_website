@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient text-white py-5 mb-5">
+    <div class="container">
+        <div class="p-2 mb-2 bg-dark text-light rounded-5">
+            <div class="container-fluid py-5">
+                <h1 class="display-9">{{ project.title }}</h1>
+                <p class="lead">{{ project.date }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Post Content -->
+<section class="container mb-5">
+    <div class="p-5 mb-5 bg-light text-dark rounded-3">
+        <div class="container-fluid py-5">
+            <div class="blog-content text">
+                {{ project.content|safe }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

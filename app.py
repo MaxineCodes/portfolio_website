@@ -20,8 +20,6 @@ db = SQLAlchemy(app)
 # STATIC routing
 @app.route("/")
 def index(): return render_template("index.html")
-@app.route("/portfolio")
-def portfolio(): return render_template("portfolio.html")
 @app.route("/resume")
 def resume(): return render_template("resume.html")
 @app.route("/contact")
@@ -32,6 +30,16 @@ def tech(): return render_template("tech.html")
 def writing(): return render_template("writing.html")
 
 # DYNAMIC routing
+@app.route('/portfolio')
+def portfolio():
+    recent_projects = PortfolioPost.query.order_by(PortfolioPost.date.desc()).all()
+    print(recent_projects)
+    return render_template('portfolio.html', projects=recent_projects)
+@app.route('/portfolio/<int:portfolio_post_id>')
+def portfolio_post(portfolio_post_id):
+    project = PortfolioPost.query.get_or_404(portfolio_post_id)
+    return render_template('portfolioPost.html', project=project)
+
 @app.route('/blog')
 def blog():
     recent_blogs = BlogPost.query.order_by(BlogPost.date.desc()).all()
@@ -65,38 +73,40 @@ class BlogPost(db.Model):
     def __repr__(self): return f"Blog Post [{self.id}]: {self.title}"
 
 # Portfolio item
-class PortfolioItem(db.Model):
-    __tablename__ = 'portfolio_items'
+class PortfolioPost(db.Model):
+    __tablename__ = 'portfolio_posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     date = db.Column(db.Date)
-    description = db.Column(db.Text)
+    thumbnail = db.Column(db.Text) # path to image
     content = db.Column(db.Text) # markdown
     # Relationship to images
-    images = db.relationship('Image', backref='portfolio_item', lazy=True)
+    images = db.relationship('Media', backref='portfolio_post', lazy=True)
     # Class Constructor
-    def __init__(self, title, date, description, content):
+    def __init__(self, title, date, thumbnail, content):
         self.title = title
         self.date = date
-        self.description = description
+        self.thumbnail = thumbnail
         self.content = content # markdown
-    # Portfolio item representation
-    def __repr__(self): return f"Portfolio item [{self.id}]: {self.title}"
+    # Portfolio post representation
+    def __repr__(self): return f"Portfolio post [{self.id}]: {self.title}"
 
-# Gallery image
-class Image(db.Model):
-    __tablename__ = 'images'
+# Media item
+class Media(db.Model):
+    __tablename__ = 'media_items'
     id = db.Column(db.Integer, primary_key=True)
-    portfolio_item_id = db.Column(db.Integer, db.ForeignKey('portfolio_items.id'))
-    alt_text = db.Column(db.Text)
     file_path = db.Column(db.Text)
+    type = db.Column(db.Text)
+    alt_text = db.Column(db.Text, nullable=True)
+    portfolio_post_id = db.Column(db.Integer, db.ForeignKey('portfolio_posts.id'), nullable=True)
     # Class Constructor
-    def __init__(self, portfolio_item_id, alt_text, file_path):
-        self.portfolio_item_id = portfolio_item_id
-        self.alt_text = alt_text
+    def __init__(self, file_path, media_type="image", alt_text=None, portfolio_post_id=None):
         self.file_path = file_path
-    # Image representation
-    def __repr__(self): return f"Image [{self.id}]: {self.file_path}"
+        self.type = media_type
+        self.alt_text = alt_text
+        self.portfolio_post_id = portfolio_post_id
+    # Media representation
+    def __repr__(self): return f"Media [{self.id}]: {self.file_path}"
 
 ####################################
 #### Put stuff in the database #####
@@ -116,10 +126,10 @@ with app.app_context():
 
     all_blogs = BlogPost.query.all()
     print(*all_blogs , sep="\n")
-    all_portfolio_items = PortfolioItem.query.all()
-    print(*all_portfolio_items , sep="\n")
-    all_images = Image.query.all()
-    print(*all_images , sep="\n")
+    all_portfolio_posts = PortfolioPost.query.all()
+    print(*all_portfolio_posts , sep="\n")
+    all_media = Media.query.all()
+    print(*all_media , sep="\n")
 
 
 

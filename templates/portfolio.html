@@ -11,15 +11,16 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4 mb-4" v-for="project in projects">
+{% for project in projects %}
+    <div class="col-md-4 mb-4">
         <div class="card h-100">
-            <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Project">
+            <img src={{ project.thumbnail }} class="card-img-top" alt="Project">
             <div class="card-body">
-                <h5 class="card-title">Project Name</h5>
-                <p class="card-text">Description of the project........</p>
-                <a href="#" class="btn bg-custom">View Project</a>
+                <h5 class="card-title">{{ project.title }}</h5>
+                <a href="/portfolio/{{ project.id }}" class="btn bg-custom">View project</a>
             </div>
         </div>
     </div>
+{% endfor %}
 </div>
 {% endblock %}
