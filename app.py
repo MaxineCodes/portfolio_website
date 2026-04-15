@@ -1,5 +1,6 @@
 # Imports
 import os
+from datetime import date
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -49,7 +50,10 @@ class Blog(db.Model):
         self.date = date
         self.description = description
         self.content = content # markdown
+    # Blog representation
+    def __repr__(self): return f"Blog [{self.id}]: {self.title}"
 
+'''
 # Portfolio item
 class PortfolioItem(db.Model):
     __tablename__ = 'portfolio_items'
@@ -64,6 +68,8 @@ class PortfolioItem(db.Model):
         self.date = date
         self.description = description
         self.content = content # markdown
+    # Portfolio item representation
+    def __repr__(self): return f"Portfolio item [{self.id}]: {self.title}"
 
 # Gallery image
 class Image(db.Model):
@@ -77,10 +83,28 @@ class Image(db.Model):
         self.portfolio_item_id = portfolio_item_id
         self.altText = alt_text
         self.filePath = file_path
+    # Image representation
+    def __repr__(self): return f"Image [{self.id}]: {self.filePath}"
+'''
 
 ####################################
 #### Put stuff in the database #####
 ####################################
+with app.app_context():
+    #db.session.delete(Blog.query.get(1))
+    db.create_all()
+    blog1 = Blog("My first blog", date(2000,1,1), "This is a blog post", "This is the content of the blog post")
+    db.session.add(blog1)
+    db.session.commit()
+    #portfolioItem1 = PortfolioItem("Portfolio Item 1", "2000-01-01", "This is a portfolio item", "This is the content of the portfolio item")
+    #db.session.add(portfolioItem1)
+    #db.session.commit()
+    #image1 = Image(portfolioItem1.id, "Alt text for image 1", "path/to/image1.jpg")
+    #db.session.add(image1)
+    #db.session.commit()
+
+    all_blogs = Blog.query.all()
+    print(all_blogs)
 
 
 
