@@ -53,7 +53,7 @@ WTForms==3.2.1
     }
 ```
 
-## Database table 1: Blog
+**Database table 1: Blog**  <br>
 Een blog is een simpelere object om een database-table voor te maken.
 `.md` bestanden kunnen in de browser gerenderd worden via `from flask import render_template`. 
 
@@ -85,8 +85,7 @@ class Blog(db.Model):
 	self.content = content
 
 ```
-
-## Database table 2: Portfolio
+**Database table 2: Portfolio**  <br>
 Deze database-table is iets ingewikkelder. Het liefst kunnen de image-gallery en de text-markdown door elkaar heen. Een portfolio-item bevat ook een galerij van beelden, dit kan er maar 1 zijn, of 25. Uiteindelijk kan het zelfs een embed of video bevatten, maar dit kan op dezelfde manier geïmplementeerd worden als beelden als de database-structuur slim aan wordt gepakt. Zie database 3.
 
 Requirements:
@@ -120,7 +119,8 @@ class PortfolioItem(db.Model):
 
 ```
 
-## Database table 3: Images
+**Database table 3: Images**  <br>
+Deze database-table is een subtable van de portfolio-item table.
 Deze database-table zou in de toekomst ook videos of embeds kunnen ondersteunen.
 
 Requirements:
