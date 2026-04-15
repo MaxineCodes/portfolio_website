@@ -25,6 +25,22 @@ WTForms==3.2.1
 ```
 ---
 
+# Features
+- **Home/About me pagina**  
+Een korte beschrijving van mij, mijn skills en wat voorbeelden van mijn werk.
+- **Portfolio pagina**  
+Bevat een galerij aan portfolio-items met een thumbnail, en een knop om de portfolio-item te bekijken. Dit gaat via een database.
+- **Blog pagina**  
+Een lijst van blog-posts met een knop om de blog-post te bekijken. Dit gaat via een database.
+- **Resume pagina**  
+Mijn CV.
+- **Tech pagina**  
+Overview van mijn tech-stack, zoals de software die ik gebruik en de hardware die ik heb.
+- **Writing pagina**  
+Voor als ik ooit iets leuks wil schrijven, zoals tutorials in de toekomst bijvoorbeeld.
+
+---
+
 # Database design
 
 ```
