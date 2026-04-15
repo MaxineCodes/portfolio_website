@@ -34,9 +34,9 @@ def tech(): return render_template("tech.html")
 def writing(): return render_template("writing.html")
 
 # DYNAMIC routing
-@app.route('/blogPost/<int:blog_id>')
+@app.route('/blog/<int:blog_id>')
 def blog_post(blog_id):
-    blog = Blog.query.get_or_404(blog_id)
+    blog = BlogPost.query.get_or_404(blog_id)
     return render_template('blogPost.html', blog=blog)
 
 
@@ -45,8 +45,8 @@ def blog_post(blog_id):
 ###########################
 
 # Blog
-class Blog(db.Model):
-    __tablename__ = 'blogs'
+class BlogPost(db.Model):
+    __tablename__ = 'blog_posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     date = db.Column(db.Date)
@@ -59,7 +59,7 @@ class Blog(db.Model):
         self.description = description
         self.content = content # markdown
     # Blog representation
-    def __repr__(self): return f"Blog [{self.id}]: {self.title}"
+    def __repr__(self): return f"Blog Post [{self.id}]: {self.title}"
 
 # Portfolio item
 class PortfolioItem(db.Model):
@@ -100,18 +100,18 @@ class Image(db.Model):
 ####################################
 with app.app_context():
     #db.session.delete(Blog.query.get(1))
-    db.create_all()
-    blog1 = Blog("My first blog", date(2000,1,1), "This is a blog post", "This is the content of the blog post")
-    db.session.add(blog1)
-    db.session.commit()
-    portfolioItem1 = PortfolioItem("Portfolio Item 1", date(2000,1,1), "This is a portfolio item", "This is the content of the portfolio item")
-    db.session.add(portfolioItem1)
-    db.session.commit()
-    image1 = Image(portfolioItem1.id, date(2000,1,1), "path/to/image1.jpg")
-    db.session.add(image1)
-    db.session.commit()
+    #db.create_all()
+    #blog1 = BlogPost("My first blog", date(2000,1,1), "This is a blog post", "This is the content of the blog post")
+    #db.session.add(blog1)
+    #db.session.commit()
+    #portfolioItem1 = PortfolioItem("Portfolio Item 1", date(2000,1,1), "This is a portfolio item", "This is the content of the portfolio item")
+    #db.session.add(portfolioItem1)
+    #db.session.commit()
+    #image1 = Image(portfolioItem1.id, date(2000,1,1), "path/to/image1.jpg")
+    #db.session.add(image1)
+    #db.session.commit()
 
-    all_blogs = Blog.query.all()
+    all_blogs = BlogPost.query.all()
     print(*all_blogs , sep="\n")
     all_portfolio_items = PortfolioItem.query.all()
     print(*all_portfolio_items , sep="\n")
