@@ -53,14 +53,12 @@ body {
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('tech') }}">/Tech</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" href="{{ url_for('writing') }}">/Writing</a>
-                    </li>
-                    <!--
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">/Contact</a>
                     </li>
-                    -->
                 </ul>
 
                 <form class="d-flex" role="login">
@@ -78,7 +76,7 @@ body {
 
     <!-- Footer -->
     {% block footer %}
-    <footer class="bg-light text-light py-5">
+    <footer class="bg-light text-dark py-5">
         <div class="container">
             <div class="row">
                 <!-- About Section -->
@@ -93,12 +91,12 @@ body {
                     <h5>Navigation</h5>
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a href="{{ url_for('index') }}" class="text-muted text-decoration-none">/Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">/Portfolio</a></li>
+                        <li class="mb-2"><a href="{{ url_for('portfolio') }}" class="text-muted text-decoration-none">/Portfolio</a></li>
                         <li class="mb-2"><a href="{{ url_for('resume') }}" class="text-muted text-decoration-none">/Resume</a></li>
                         <li class="mb-2"><a href="{{ url_for('blog') }}" class="text-muted text-decoration-none">/Blog</a></li>
-                        <li class="mb-2"><a href="{{ url_for('tech') }}" class="text-muted text-decoration-none">/Tech<E></E></a></li>
-                        <li class="mb-2"><a href="{{ url_for('tech') }}" class="text-muted text-decoration-none">/Writing<E></E></a></li>
-                        <!-- <li><a href="#" class="text-muted text-decoration-none">/Contact</a></li> -->
+                        <li class="mb-2"><a href="{{ url_for('tech') }}" class="text-muted text-decoration-none">/Tech</a></li>
+                        <!--<li class="mb-2"><a href="{{ url_for('writing') }}" class="text-muted text-decoration-none">/Writing</a></li>-->
+                        <li class="mb-2"><a href="{{ url_for('contact') }}" class="text-muted text-decoration-none">/Contact</a></li>
                     </ul>
                 </div>
 
@@ -107,9 +105,9 @@ body {
                     <h5>Connect</h5>
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a href="#" class="text-muted text-decoration-none">contact@ItsMaxine.eu</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">linkedin.com/in/maxinemeijboom</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">github.com/maxinecodes</a></li>
-                        <li><a href="#" class="text-muted text-decoration-none">artstation.com/maxine3d</a></li>
+                        <li class="mb-2"><a href="https://www.linkedin.com/in/maxinemeijboom/" class="text-muted text-decoration-none">linkedin.com/in/maxinemeijboom</a></li>
+                        <li class="mb-2"><a href="https://github.com/MaxineCodes" class="text-muted text-decoration-none">github.com/maxinecodes</a></li>
+                        <li><a href="https://www.artstation.com/maxine3d" class="text-muted text-decoration-none">artstation.com/maxine3d</a></li>
                     </ul>
                 </div>
             </div>

@@ -19,11 +19,11 @@
 <section class="container mb-5">
     <div class="d-flex flex-column gap-4">
     {% for blog_post in blogs %}
-    <div class="card h-100 bg-dark text-light">
+    <div class="card h-100">
         <div class="card-body">
             <h5 class="card-title">{{ blog_post.title }}</h5>
             <p class="card-text">{{ blog_post.description }}</p>
-            <a href="/blog/{{ blog_post.id }}" class="btn bg-custom">Read More</a>
+            <a href="/blog/{{ blog_post.id }}" class="btn btn-primary btn-lg px-4">Read More</a>
         </div>
     </div>
     {% endfor %}
