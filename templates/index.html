@@ -24,7 +24,7 @@
         <h1 class="typewriter display-5"> Hi, I am Maxine  </h1>
       </div>
       <p class="lead"></p>
-        <p class="lead" style="background-color: var(--color-bg-terminal); padding: 8px 12px; border-radius: 4px; display: inline;">
+        <p class="lead" style="color: var(--color-text-light) ;background-color: var(--color-bg-terminal); padding: 8px 12px; border-radius: 4px; display: inline;">
         Software Developer, Technical 3D Artist</p>
 
       <div class="d-flex justify-content-center gap-3 mt-4">
@@ -40,7 +40,7 @@
         <div class="row align-items-center g-5">
 
             <!-- Text Content -->
-            <div class="col-md-6 mb-4 bg-light text-dark mb-md-2">
+            <div class="col-md-6 mb-4 text-light bg-dark mb-md-2 rounded-5">
                 <div class="container-fluid py-5">
                     <h2 class="h3 mb-4">About Me</h2>
                     <p class="lead">Hi, I'm Maxine, a software developer from the Netherlands with a huge passion for 3D graphics, rendering engines, mathematics and optimization.</p>
@@ -68,10 +68,10 @@
                     <div class="col-6">
         <h6 class="small text-muted mb-2">🔠 Languages</h6>
             <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-primary d-flex align-items-center gap-1">🇳🇱 Dutch</span>
-                <span class="badge bg-primary d-flex align-items-center gap-1">🇬🇧 English</span>
-                <span class="badge bg-success d-flex align-items-center gap-1">Frisian</span>
-                <span class="badge bg-success d-flex align-items-center gap-1">🇯🇵 Japanese</span>
+                <span class="badge bg-success text-dark d-flex align-items-center gap-1">🇳🇱 Dutch</span>
+                <span class="badge bg-success text-dark d-flex align-items-center gap-1">🇬🇧 English</span>
+                <span class="badge bg-lavender text-dark d-flex align-items-center gap-1">Frisian</span>
+                <span class="badge bg-lavender text-dark d-flex align-items-center gap-1">🇯🇵 Japanese</span>
                 <span class="badge bg-warning text-dark d-flex align-items-center gap-1">🇨🇳 Mandarin</span>
                 <span class="badge bg-warning text-dark d-flex align-items-center gap-1">🇩🇪 German</span>
             </div>
@@ -85,16 +85,69 @@
                     <img src="{{ url_for('static', filename='images/character.jpg') }}"
                          class="img-fluid rounded-5 shadow-lg"
                          alt="Maxine"
-                         style="max-height: 400px; object-fit: cover; width: 100%;">
+                         style="max-height: 800px; object-fit: cover; width: 100%;">
                 </div>
             </div>
+    </section>
+
+    <!-- Latest Work Section -->
+    <section class="my-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 mb-3 text-coral">Latest Work</h2>
+            <h4 class="text-secondary">Featured Projects</h4>
+        </div>
+
+        <div class="row g-4">
+            <!-- 3 Latest Projects -->
+            {% for project in projects[:3] %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src={{ project.thumbnail }} class="card-img-top" alt="Project">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <a href="/portfolio/{{ project.id }}" class="btn btn-primary btn-lg px-4">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="text-center mt-3">
+                    <a href="{{ url_for('portfolio') }}" class="btn btn-primary btn-lg px-4">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blogs Section -->
+    <section class="my-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 mb-3 text-coral">Latest Blogs</h2>
+        </div>
+
+        <div class="">
+            <!-- Latest Blog -->
+            <div class="md-6 d-flex flex-column gap-4">
+                {% for blog_post in blogs[:3] %}
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog_post.title }}</h5>
+                        <p class="card-text">{{ blog_post.description }}</p>
+                        <a href="/blog/{{ blog_post.id }}" class="btn btn-primary btn-lg px-4">Read More</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="text-center mt-3">
+                    <a href="{{ url_for('blog') }}" class="btn btn-primary btn-lg px-4">View All Posts →</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="my-5">
         <div class="text-center mb-5">
-            <h2 class="display-6 mb-3">Skills</h2>
-            <p class="text-muted">Tools and technologies I work with</p>
+            <h2 class="display-6 mb-3 text-coral">Skills</h2>
+            <h4 class="text-secondary">Tools and technologies I work with</h4>
         </div>
 
         <div class="row g-4">
@@ -103,19 +156,19 @@
                     <div class="card-body">
                         <h5 class="card-title">Development</h5>
                         <div class="d-flex flex-wrap gap-2 mt-3">
-                            <span class="badge bg-dark">C/C++</span>
-                            <span class="badge bg-dark">Python</span>
-                            <span class="badge bg-dark">PyMEL/MEL</span>
-                            <span class="badge bg-dark">Lua</span>
-                            <span class="badge bg-dark">HTML/CSS/Bootstrap</span>
-                            <span class="badge bg-dark">OpenGL</span>
-                            <span class="badge bg-dark">Unity3D</span>
-                            <span class="badge bg-dark">Unreal Engine 4/5</span>
-                            <span class="badge bg-dark">Git</span>
-                            <span class="badge bg-dark">Docker</span>
-                            <span class="badge bg-dark">Linux</span>
-                            <span class="badge bg-dark">Visual Studio</span>
-                            <span class="badge bg-dark">PyCharm</span>
+                            <span class="badge">C/C++</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">PyMEL/MEL</span>
+                            <span class="badge">Lua</span>
+                            <span class="badge">HTML/CSS/Bootstrap</span>
+                            <span class="badge">OpenGL</span>
+                            <span class="badge">Unity3D</span>
+                            <span class="badge">Unreal Engine 4/5</span>
+                            <span class="badge">Git</span>
+                            <span class="badge">Docker</span>
+                            <span class="badge">Linux</span>
+                            <span class="badge">Visual Studio</span>
+                            <span class="badge">PyCharm</span>
                         </div>
                     </div>
                 </div>
@@ -126,17 +179,17 @@
                     <div class="card-body">
                         <h5 class="card-title">3D DCC</h5>
                         <div class="d-flex flex-wrap gap-2 mt-3">
-                            <span class="badge bg-dark">ZBrush</span>
-                            <span class="badge bg-dark">Autodesk Maya</span>
-                            <span class="badge bg-dark">Blender</span>
-                            <span class="badge bg-dark">3DCoat</span>
-                            <span class="badge bg-dark">Substance Painter</span>
-                            <span class="badge bg-dark">Substance Designer</span>
-                            <span class="badge bg-dark">Marmoset Toolbag</span>
-                            <span class="badge bg-dark">Houdini</span>
-                            <span class="badge bg-dark">Photoshop</span>
-                            <span class="badge bg-dark">Illustrator</span>
-                            <span class="badge bg-dark">Krita</span>
+                            <span class="badge">ZBrush</span>
+                            <span class="badge">Autodesk Maya</span>
+                            <span class="badge">Blender</span>
+                            <span class="badge">3DCoat</span>
+                            <span class="badge">Substance Painter</span>
+                            <span class="badge">Substance Designer</span>
+                            <span class="badge">Marmoset Toolbag</span>
+                            <span class="badge">Houdini</span>
+                            <span class="badge">Photoshop</span>
+                            <span class="badge">Illustrator</span>
+                            <span class="badge">Krita</span>
                         </div>
                     </div>
                 </div>
@@ -147,12 +200,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Project Management & Business</h5>
                         <div class="d-flex flex-wrap gap-2 mt-3">
-                            <span class="badge bg-dark">Scrum</span>
-                            <span class="badge bg-dark">PowerBI</span>
-                            <span class="badge bg-dark">Github Projects</span>
-                            <span class="badge bg-dark">Jira</span>
-                            <span class="badge bg-dark">Autodesk Shotgun</span>
-                            <span class="badge bg-dark">Confluence</span>
+                            <span class="badge">Scrum</span>
+                            <span class="badge">PowerBI</span>
+                            <span class="badge">Github Projects</span>
+                            <span class="badge">Jira</span>
+                            <span class="badge">Autodesk Shotgun</span>
+                            <span class="badge">Confluence</span>
                         </div>
                     </div>
                 </div>
@@ -161,49 +214,4 @@
         </div>
     </section>
 
-    <!-- Latest Work Section -->
-    <section class="my-5">
-        <div class="text-center mb-5">
-            <h2 class="display-6 mb-3">Latest Work</h2>
-            <p class="text-muted">Featured projects and recent blog posts</p>
-        </div>
-
-        <div class="row g-4">
-            <!-- Latest Portfolio -->
-            <div class="col-md-6">
-                <h3 class="h5 mb-4">Latest Projects</h3>
-                <div class="card project-card mb-3 shadow-sm">
-                    <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Project">
-                    <div class="card-body">
-                        <h5 class="card-title">Some impressive project</h5>
-                        <p class="card-text">It's very impressive I am sure</p>
-                        <div class="d-flex gap-2">
-                            <span class="badge bg-primary">Tag1</span>
-                            <span class="badge bg-primary">Tag2</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="#" class="btn btn-outline-primary btn-sm">View All Projects →</a>
-                </div>
-            </div>
-
-            <!-- Latest Blog -->
-            <div class="col-md-6">
-                <h3 class="h5 mb-4">Latest Blog Posts</h3>
-                <div class="card blog-card mb-3 shadow-sm">
-                    <img src="{{ url_for('static', filename='images/placeholder.svg') }}" class="card-img-top" alt="Blog Post">
-                    <div class="card-body">
-                        <small class="text-muted">March 15, 2026</small>
-                        <h5 class="card-title mt-2">Some blog about something</h5>
-                        <p class="card-text">I talk about something here</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                    </div>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="#" class="btn btn-outline-primary btn-sm">View All Posts →</a>
-                </div>
-            </div>
-        </div>
-    </section>
 {% endblock %}

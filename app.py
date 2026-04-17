@@ -19,7 +19,14 @@ db = SQLAlchemy(app)
 ##########################
 # STATIC routing
 @app.route("/")
-def index(): return render_template("index.html")
+def index():
+    recent_projects = Project.query.order_by(Project.date.desc()).all()
+    print(recent_projects)
+    recent_blogs = BlogPost.query.order_by(BlogPost.date.desc()).all()
+    print(recent_blogs)
+    return render_template("index.html",
+                           projects=recent_projects,
+                           blogs=recent_blogs)
 @app.route("/resume")
 def resume(): return render_template("resume.html")
 @app.route("/contact")

@@ -59,12 +59,28 @@ body {
 }
 
 /* Background utility classes */
-.bg-black { background-color: var(--color-bg-dark); }
-.bg-dark { background-color: var(--color-bg); }
-.bg-light { background-color: var(--color-bg-light); }
+/* These must all be marked !important otherwise they won't overwrite bootstrap css */
+.bg-black { background-color: var(--color-bg-dark)!important; }
+.bg-dark { background-color: var(--color-bg) !important; }
+.bg-light { background-color: var(--color-bg-light)!important; }
 /* Text utility classes */
-.text-light { color: var(--color-text-light); }
-.text-dark { color: var(--color-text-dark); }
+.text-light { color: var(--color-text-light)!important; }
+.text-primary { color: var(--color-primary)!important;}
+.text-coral { color: var(--color-coral)!important;}
+.text-dark { color: var(--color-text-dark)!important; }
+/* Component utility classes */
+.bg-primary { background-color: var(--color-primary)!important; }
+.bg-secondary { background-color: var(--color-secondary)!important; }
+.bg-success { background-color: var(--color-success)!important; }
+.bg-warning { background-color: var(--color-warning)!important; }
+.bg-danger { background-color: var(--color-danger)!important; }
+.bg-info { background-color: var(--color-info)!important; }
+/* Extra colours utility classes */
+.bg-pink { background-color: var(--color-pink)!important; }
+.bg-coral { background-color: var(--color-coral)!important; }
+.bg-yellow { background-color: var(--color-yellow)!important; }
+.bg-light-green { background-color: var(--color-light-green)!important; }
+.bg-lavender { background-color: var(--color-lavender)!important; }
 
 /* Button styling */
 .btn-primary {
@@ -223,6 +239,8 @@ html, body {
 
 /* Badge styling for skills and tags */
 .badge {
+  color: var(--color-text-light);
+  background-color: var(--color-secondary);
   border-radius: 50px;
   padding: 0.5em 0.8em;
   font-weight: 500;
