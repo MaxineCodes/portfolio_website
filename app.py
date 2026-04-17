@@ -35,6 +35,8 @@ def contact(): return render_template("contact.html")
 def tech(): return render_template("tech.html")
 @app.route("/writing")
 def writing(): return render_template("writing.html")
+@app.route("/login")
+def login(): return render_template("login.html")
 
 # DYNAMIC routing
 @app.route('/portfolio')
