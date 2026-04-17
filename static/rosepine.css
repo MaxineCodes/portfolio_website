@@ -118,6 +118,10 @@ html, body {
   color: var(--color-text-light);
   text-shadow: 1px 1px 1px var(--color-primary);
 }
+.navbar-brand:hover {
+  color: var(--color-text-light) !important;
+}
+
 /* Nav link styling */
 .navbar-nav .nav-link {
   color: var(--color-text-light);

@@ -4,10 +4,10 @@ Deze website zal ik ook uitbreiden en persoonlijk gebruiken.
 
 ---
 ## Vereisten:
-- Website heeft vormgeving en een koppeling met een database
-- Op de site ingevulde data komt via SQLAlchemy terecht in een SQLite-database
-- Website maakt gebruik van verschillende views
-- Geregistreerde bezoekers kunnen op de site inloggen   
+- ✅ Website heeft vormgeving en een koppeling met een database
+- ✅ Op de site ingevulde data komt via SQLAlchemy terecht in een SQLite-database
+- ✅ Website maakt gebruik van verschillende views
+- ❌ Geregistreerde bezoekers kunnen op de site inloggen   
 
 ### Libraries & modules:
 `Requirements.txt`
@@ -19,6 +19,7 @@ Flask-Email==1.4.4
 Flask-Migrate==4.1.0
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.2
+Flask-Login==0.6.3
 Jinja2==3.1.5
 SQLAlchemy==2.0.38
 WTForms==3.2.1
@@ -29,17 +30,17 @@ python-frontmatter==1.1.0
 
 # Features
 - **Home/About me pagina**  
-Een korte beschrijving van mij, mijn skills en wat voorbeelden van mijn werk.
+Een korte beschrijving van mij, mijn skills en wat voorbeelden van mijn werk en blogs die dynamisch worden geladen uit de database.
 - **Portfolio pagina**  
-Bevat een galerij aan portfolio-items met een thumbnail, en een knop om de portfolio-item te bekijken. Dit gaat via een database.
+Bevat een galerij aan portfolio-items met een thumbnail, en een knop om de portfolio-item te bekijken. Dit gaat via de database.
 - **Blog pagina**  
-Een lijst van blog-posts met een knop om de blog-post te bekijken. Dit gaat via een database.
+Een lijst van blog-posts met een knop om de blog-post te bekijken. Dit gaat via de database.
 - **Resume pagina**  
-Mijn CV.
+Simpele statische pagina met mijn CV.
 - **Tech pagina**  
 Overview van mijn tech-stack, zoals de software die ik gebruik en de hardware die ik heb.
-- **Writing pagina**  
-Voor als ik ooit iets leuks wil schrijven, zoals tutorials in de toekomst bijvoorbeeld.
+- **~~Login~~**  
+Niet aan toe gekomen.
 
 ---
 
@@ -54,20 +55,20 @@ Voor als ik ooit iets leuks wil schrijven, zoals tutorials in de toekomst bijvoo
         string content
     }
 
-    PORTFOLIO_ITEMS {
+    PROJECTS {
         int id PK
         string title
         date date
-        string description
+        string thumbnail
         string content
     }
 
-    IMAGES {
+    MEDIA_ITEMS {
         int id PK
-        int portfolio_item_id FK
-        int blog_id FK
-        string alt_text
+        int portfolio_project_id FK
         string file_path
+        string type
+        string alt_text
     }
 ```
 
@@ -79,32 +80,10 @@ Requirements:
 - Title
 - Date
 - Description
-- Contents markdown file
-
-```python
-class Blog(db.Model):
-	__tablename__ = 'blogs'
-	# ID: db.Integer
-	# TITLE: db.Text
-	# DATE: db.Date
-	# DESCRIPTION: db.Text
-	# CONTENT: db.Text (Markdown)
-	id = db.Column(db.Integer,primary_key=True)
-	title = db.Column(db.Text)
-	date = db.Column(db.Date)
-	description = db.Column(db.Text)
-	content = db.Column(db.Text)
-	
-	# Class Constructor
-	def __init__(self,title,date,description,content):
-	self.title = title
-	self.date = date
-	self.description = description
-	self.content = content
-
-```
-**Database table 2: Portfolio**  <br>
-Deze database-table is iets ingewikkelder. Het liefst kunnen de image-gallery en de text-markdown door elkaar heen. Een portfolio-item bevat ook een galerij van beelden, dit kan er maar 1 zijn, of 25. Uiteindelijk kan het zelfs een embed of video bevatten, maar dit kan op dezelfde manier geïmplementeerd worden als beelden als de database-structuur slim aan wordt gepakt. Zie database 3.
+- Contents markdown file  
+  
+**Database table 2: Project**  <br>
+Deze database-table is iets ingewikkelder. Het liefst kunnen de image-gallery en de text-markdown door elkaar heen. Een portfolio-item bevat ook een galerij van beelden, dit kan er maar 1 zijn, of 25. Zie database 3.
 
 Requirements:
 - Title
@@ -114,57 +93,21 @@ Requirements:
 - Image gallery
 - Text markdown
 
-```python
-class PortfolioItem(db.Model):
-	__tablename__ = 'portfolio_items'
-	# ID: db.Integer
-	# TITLE: db.Text
-	# DATE: db.Date
-	# DESCRIPTION: db.Text
-	# CONTENT: db.Text (Markdown)
-	id = db.Column(db.Integer,primary_key=True)
-	title = db.Column(db.Text)
-	date = db.Column(db.Date)
-	description = db.Column(db.Text)
-	content = db.Column(db.Text)
-	
-	# Class Constructor
-	def __init__(self,title,date,description,content):
-	self.title = title
-	self.date = date
-	self.description = description
-	self.content = content
-
-```
-
-**Database table 3: Images**  <br>
-Deze database-table is een subtable van de portfolio-item table.
-Deze database-table zou in de toekomst ook videos of embeds kunnen ondersteunen.
+**Database table 3: Media**  <br>
+Deze database-table is een subtable van de project table.
 
 Requirements:
 - Foreign-Key om te linken met portfolio_item table
 - Alt-Text wat ook eventueel als mini-omschrijving kan worden gebruikt.
-- File-Path 
+- File-Path
 
-```python
-class Image(db.Model):
-	__tablename__ = 'portfolio_items'
-	# ID: db.Integer (PK)
-	# PORTFOLIO_ITEM_ID: db.Text (FK)
-	# ALT_TEXT: db.Text
-	# FILE_PATH: db.Text
-	id = db.Column(db.Integer, primary_key=True)
-    portfolio_item_id = db.Column(db.Integer, db.ForeignKey('portfolio_item.ID'))
-    alt_text = db.Column(db.Text)
-    file_path = db.Column(db.Text)
-	
-	# Class Constructor
-	    def __init__(self, portfolio_item_id, alt_text, file_path):
-        self.portfolio_item_id = portfolio_item_id
-        self.altText = alt_text
-        self.filePath = file_path
+---
 
-```
+## Scripts
+
+Momenteel worden twee scripts gebruikt om de database te vullen. `/scripts/blog_markdown_to_db.py` en `/scripts/portfolio_markdown_to_db.py`
+De data wordt uit markdown bestanden gehaald. 
+Idealer is dat de user (ik als site-eigenaar) deze aan kan maken via een GUI.
 
 ---
 
