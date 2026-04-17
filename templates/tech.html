@@ -3,56 +3,45 @@
 {% block title %}Tech{% endblock %}
 
 {% block content %}
+{{ page_header("Tech", "A page dedicated to my tech stack") }}
 
-    <!-- Intro -->
-    <section id="about" class="my-5">
-        <div class="row align-items-center g-5">
-            <!-- Text Content -->
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="h3 mb-4">Tech Stack</h2>
-                <p class="lead">An overview of my tech stack</p>
-            </div>
-        </div>
-    </section>
+<section id="skills" class="my-5">
+    <div class="text-center mb-5">
+        <h2 class="display-6 mb-3">Computers</h2>
+        <p class="text-muted">List of all computers I use</p>
+    </div>
 
-
-    <section id="skills" class="my-5">
-        <div class="text-center mb-5">
-            <h2 class="display-6 mb-3">Computers</h2>
-            <p class="text-muted">List of all computers I use</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card tech-card h-100 shadow-sm">
-                    <div class="card-body">
-                            <h5 class="card-title">Personal Computer</h5>
-                        <div class="d-flex flex-wrap gap-2 mt-3">
-                            <span class="badge bg-dark">Linux PikaOS (Debian based) OS</span>
-                            <span class="badge bg-dark">AMD Ryzen 7900x 12-core CPU</span>
-                            <span class="badge bg-dark">RTX 3080 GPU</span>
-                            <span class="badge bg-dark">32GB DDR5 RAM</span>
-                            <span class="badge bg-dark">Huion Kamvas 16 2.5K Graphics Tablet Display</span>
-                        </div>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card tech-card h-100 shadow-sm">
+                <div class="card-body">
+                        <h5 class="card-title">Personal Computer</h5>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <span class="badge bg-dark">Linux PikaOS (Debian based) OS</span>
+                        <span class="badge bg-dark">AMD Ryzen 7900x 12-core CPU</span>
+                        <span class="badge bg-dark">RTX 3080 GPU</span>
+                        <span class="badge bg-dark">32GB DDR5 RAM</span>
+                        <span class="badge bg-dark">Huion Kamvas 16 2.5K Graphics Tablet Display</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-6">
-                <div class="card tech-card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Server 1</h5>
-                        <p class="card-text">This server hosts my game servers like Minecraft, and also Plex, as well as this website!</p>
-                        <div class="d-flex flex-wrap gap-2 mt-3">
-                            <span class="badge bg-dark">Debian 13 OS</span>
-                            <span class="badge bg-dark">Intel i7 8th gen</span>
-                            <span class="badge bg-dark">16GB DDR4 RAM</span>
-                        </div>
+        <div class="col-md-6">
+            <div class="card tech-card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Server 1</h5>
+                    <p class="card-text">This server hosts my game servers like Minecraft, and also Plex, as well as this website!</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <span class="badge bg-dark">Debian 13 OS</span>
+                        <span class="badge bg-dark">Intel i7 8th gen</span>
+                        <span class="badge bg-dark">16GB DDR4 RAM</span>
                     </div>
                 </div>
             </div>
-
         </div>
-    </section>
+
+    </div>
+</section>
 
 {% endblock %}

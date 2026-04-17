@@ -3,12 +3,7 @@
 {% block title %}Portfolio{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-5 bg-dark text-light rounded-3">
-    <div class="container-fluid py-5">
-        <h1 class="display-5">My Portfolio</h1>
-        <p class="lead">Showcase of my projects and work</p>
-    </div>
-</div>
+{{ page_header("My Portfolio", "Showcase of my projects and work") }}
 
 <div class="row">
 {% for project in projects %}
