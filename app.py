@@ -107,13 +107,13 @@ class Media(db.Model):
     file_path = db.Column(db.Text)
     type = db.Column(db.Text)
     alt_text = db.Column(db.Text, nullable=True)
-    portfolio_post_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=True)
+    portfolio_project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=True)
     # Class Constructor
-    def __init__(self, file_path, media_type="image", alt_text=None, portfolio_post_id=None):
+    def __init__(self, file_path, media_type="image", alt_text=None, portfolio_project_id=None):
         self.file_path = file_path
         self.type = media_type
         self.alt_text = alt_text
-        self.portfolio_post_id = portfolio_post_id
+        self.portfolio_project_id = portfolio_project_id
     # Media representation
     def __repr__(self): return f"Media [{self.id}]: {self.file_path}"
 
